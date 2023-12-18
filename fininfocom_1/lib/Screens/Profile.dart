@@ -8,9 +8,9 @@ class profile extends StatelessWidget {
         DateTime.parse(profilecontrol.person1['dob']['date']);
     return Scaffold(
         body: Obx(() => profilecontrol.profileloading == false
-            ? Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+            ? Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,46 +27,59 @@ class profile extends StatelessWidget {
                         SizedBox(height: 50.h),
                         Text(
                           'Name: ' +
-                              profilecontrol.person1["name"]['first'] +
                               profilecontrol.person1["name"]['title'] +
+                              '.' +
+                              profilecontrol.person1["name"]['first'] +
                               profilecontrol.person1["name"]['last'],
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
+                              overflow: TextOverflow.ellipsis,
                               fontSize: 20.sp,
                               color: Color.fromARGB(255, 3, 3, 5),
                               letterSpacing: 2.5.sp),
+                          maxLines: 1,
                         ),
                         Row(
                           children: [
                             Text(
-                                'Address: ' +
-                                        profilecontrol.person1["location"]
-                                                ['street']['number']
-                                            .toString() ??
-                                    "",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 15.sp,
-                                    color: Color.fromARGB(255, 3, 3, 5),
-                                    letterSpacing: 2.5.sp)),
+                              'Address: ' +
+                                      profilecontrol.person1["location"]
+                                              ['street']['number']
+                                          .toString() ??
+                                  "",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 15.sp,
+                                  overflow: TextOverflow.ellipsis,
+                                  color: Color.fromARGB(255, 3, 3, 5),
+                                  letterSpacing: 2.5.sp),
+                              maxLines: 1,
+                            ),
                             Text(
-                                ' , ' +
-                                        profilecontrol.person1["location"]
-                                            ['street']['name'] ??
-                                    "",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 15.sp,
-                                    color: Color.fromARGB(255, 3, 3, 5),
-                                    letterSpacing: 2.5.sp)),
+                              ' , ' +
+                                      profilecontrol.person1["location"]
+                                          ['street']['name'] ??
+                                  "",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 15.sp,
+                                  color: Color.fromARGB(255, 3, 3, 5),
+                                  letterSpacing: 2.5.sp),
+                              maxLines: 1,
+                            ),
                           ],
                         ),
-                        Text('email: ' + profilecontrol.person1['email'] ?? "",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 15.sp,
-                                color: Color.fromARGB(255, 3, 3, 5),
-                                letterSpacing: 2.5.sp)),
+                        Text(
+                          'email: ' + profilecontrol.person1['email'] ?? "",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15.sp,
+                              overflow: TextOverflow.ellipsis,
+                              color: Color.fromARGB(255, 3, 3, 5),
+                              letterSpacing: 2.5.sp),
+                          maxLines: 1,
+                        ),
                         Text(
                             'Date Of Birth:' +
                                     "${puredate.day}-${puredate.month}-${puredate.year}" ??
